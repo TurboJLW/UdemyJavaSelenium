@@ -10,7 +10,7 @@ public class SeleniumTest {
 
     @Test
     public void openGooglePage(){
-        WebDriver chromeDriver = getDriver("firefoxome");
+        WebDriver chromeDriver = getDriver("firefox");
         chromeDriver.get("https://google.com");
         System.out.println("Test Hello");
     }
