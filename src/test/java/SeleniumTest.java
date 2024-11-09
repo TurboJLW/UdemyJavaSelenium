@@ -1,4 +1,6 @@
 import org.checkerframework.checker.units.qual.C;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -10,9 +12,24 @@ public class SeleniumTest {
 
     @Test
     public void openGooglePage(){
-        WebDriver chromeDriver = getDriver("firefox");
-        chromeDriver.get("https://google.com");
-        System.out.println("Test Hello");
+        WebDriver driver = getDriver("chrome");
+        driver.manage().window().maximize();
+        Dimension dimension = new Dimension(800,600);
+        driver.manage().window().setSize(dimension);
+        driver.get("https://google.com");
+    /*
+    Java script executor, only for showcase of close() and quit() methods difference
+    driver can be cast using ((JavascriptExecutor)driver).
+    but can be also done regularly with
+    JavascriptExecutor executor = (JavascriptExecutor) driver;
+     */
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("window.open('https://x.com','blank','height=800','width=600')");
+        driver.close();
+
+//        driver.close();
+//        driver.quit();
+        System.out.println("Test Finished");
     }
 
     public WebDriver getDriver(String browser){
