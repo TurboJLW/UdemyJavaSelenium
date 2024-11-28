@@ -7,6 +7,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class SelectorTest {
 
     @Test
@@ -30,6 +32,17 @@ public class SelectorTest {
         By paraHidden = By.className("topSecret");
         driver.findElement(paraHidden);
 
+        //tag
+        By inputLocator = By.tagName("input");
+        WebElement input = driver.findElement(inputLocator);
+        input.sendKeys("Pierwszy");
+        //możemy mieć wiele elementów o danym tagu (tak jak w przypadku input). Do tego używamy findElements <
+        List<WebElement> inputs = driver.findElements(inputLocator);
+        System.out.println(inputs.size());
+
+//        for (WebElement webElement : inputs){
+//            System.out.println(webElement);
+//        }
         System.out.println("Test Finished");
     }
 
