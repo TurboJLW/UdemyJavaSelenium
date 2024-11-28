@@ -23,9 +23,12 @@ public class SelectorTest {
         //fname
         By firstName = By.name("fname");
         WebElement firstNameField = driver.findElement(firstName);
-
-        //można to zapisywać bez deklaracji zmiennej, można od razu użyć metody findElement
+        //można to zapisywać bez deklaracji zmiennej, tzn od razu użyć metody findElement
         driver.findElement(By.name("fname"));
+
+        //class
+        By paraHidden = By.className("topSecret");
+        driver.findElement(paraHidden);
 
         System.out.println("Test Finished");
     }
