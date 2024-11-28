@@ -3,8 +3,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -39,10 +37,19 @@ public class SelectorTest {
         //możemy mieć wiele elementów o danym tagu (tak jak w przypadku input). Do tego używamy findElements <
         List<WebElement> inputs = driver.findElements(inputLocator);
         System.out.println(inputs.size());
-
 //        for (WebElement webElement : inputs){
 //            System.out.println(webElement);
 //        }
+
+        //link text
+        By findW3SchoolText = By.linkText("Visit W3Schools.com!");
+        //WebElement linkText = driver.findElement(findW3SchoolText);
+        //Test nie przejdzie jeśli szukając poprzez linkText nie wprowadzimy idealnego tekstu. Z pomoca przychodzi
+        //partialLinkText
+        By findW3SchoolPartialLinkText = By.partialLinkText("W3Schools.");
+        WebElement linkText = driver.findElement(findW3SchoolPartialLinkText);
+
+
         System.out.println("Test Finished");
     }
 
