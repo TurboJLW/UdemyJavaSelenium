@@ -69,7 +69,35 @@ public class CssSelectorTest {
         //Jeśli chcemy zwrócić WSZYSTKIE elementy po tagu label używamy tyldy "~"
         By allFormAfterLabel = By.cssSelector("label ~ form");
         driver.findElements(allFormAfterLabel);
+        
+        //Selektory pozwalające na znalezienie elementu bez znajomości jego pełnej nazwy
+        //wyszukiwanie nazw używane wcześniej [x='y'] można rozszerzyć o podanie taga:
+        // input[name='fname'] - to wyszuka wszystkie tagi input o nazwie atrybutu name = fname
+        //lub aby sprawdzić czy nasz atrybut zawiera naszą wartość dodajemy *
+        // [name*='ame'] - co wyszuka wszystkie atrybuty name z które zawieraja ciag znaków 'ame'
+        // inne modyfikatory to:
+        // ^ - czy wartość atrybutu zaczyna się od tej frazy
+        // $ - czy wartość atrybutu kończy się na tej frazie
+        By attributeTag = By.cssSelector("input[name='fname']");
+        By attributeContains = By.cssSelector("[name*='name']");
+        By attributeStarts = By.cssSelector("[name^='f']");
+        By attributeEnds = By.cssSelector("[name$='name']");
 
+        driver.findElements(attributeTag);
+        driver.findElements(attributeContains);
+        driver.findElements(attributeStarts);
+        driver.findElements(attributeEnds);
 
+        //Selectory które pozwalają na wybór dzieci tagu nadrzędnego
+        //Do tego używamy zapisów
+        // tag_name:first-child, tag_name:last-child, tag_name:nth-child(index) NUMERACJA OD 1
+
+        By firstChild = By.cssSelector("li:first-child");
+        By lastChild = By.cssSelector("li:last-child");
+        By nthChild = By.cssSelector("li:nth-child(3)");
+
+        driver.findElements(firstChild);
+        driver.findElements(lastChild);
+        driver.findElements(nthChild);
     }
 }
