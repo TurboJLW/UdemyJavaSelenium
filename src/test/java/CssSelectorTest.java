@@ -30,5 +30,46 @@ public class CssSelectorTest {
         By cssName = By.cssSelector("[name='fname']");
         driver.findElement(cssName);
 
+        //By Class with Search
+        By cssClass2 = By.cssSelector("[class='tableHeader']");
+        driver.findElement(cssClass2);
+
+        //By szybko veryfikować selektory css za pomocą devTools, w konsoli przeglądarki wpisz $$("twójSelektor")
+        //Syntax jest taki sam w przeglądarce jak i selenium
+
+        //Wszystkie elementy na stronie
+        By all = By.cssSelector("*");
+        driver.findElements(all);
+
+        //W selektorach css można używać tagów html oddzielając je spacją
+        //By wywołać wszystkie elementy w liście używamy "div ul"
+        //By wywołać wszystkie elementy w tabeli używamy "table tr" itd.
+        By ulInsideDiv = By.cssSelector("div ul");
+        By trInsideTable = By.cssSelector("table tr");
+        By trInsideTBody = By.cssSelector("tbody tr");
+
+        driver.findElements(ulInsideDiv);
+        driver.findElements(trInsideTable);
+        driver.findElements(trInsideTBody);
+
+        //Chcemy znaleźć listę która jest bezpośrednim dzieckiem elementu "div". Selektor jest jak wcześniej,
+        //lecz dodajemy znak większości pomiędzy:  div > ul
+        //Takie rozróznianie nie działa dziedzicznie i można nim sprawdzić tylko pierwsze dziecko poniżej
+        By divChildUl = By.cssSelector("div > ul");
+        By tbodyChildTr = By.cssSelector("tbody > tr");
+
+        driver.findElements(divChildUl);
+        driver.findElements(tbodyChildTr);
+
+        //Chcemy znaleźć pierwszy tag form który występuje po tagu label
+        //aby to zrobić korzystamy z plusa "+", ten plus oznacza element występujący PO elemencie, w równej hierarchi
+        By firstFormAfterLabel = By.cssSelector("label + form");
+        driver.findElement(firstFormAfterLabel);
+
+        //Jeśli chcemy zwrócić WSZYSTKIE elementy po tagu label używamy tyldy "~"
+        By allFormAfterLabel = By.cssSelector("label ~ form");
+        driver.findElements(allFormAfterLabel);
+
+
     }
 }
