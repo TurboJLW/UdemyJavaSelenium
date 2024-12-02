@@ -1,7 +1,11 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class XPathSelectorTest {
 
@@ -14,5 +18,57 @@ public class XPathSelectorTest {
 
         //By użyć Xpath w konsoli przeglądarki, używamy $x
         //e.g. $x("/html/body/button")  podstawowo wygląda to jak ścieżka do folderu, lecz xpath ma o wiele więcej opcji
+        //Korzystanie z pojedyńcych slashy / nie jest najlepszą praktyką, jesli cokolwiek się zmieni w strukturze html,
+        //to selektor przestanie działać
+        By fullPath = By.xpath("/html/body/div/ul");
+        driver.findElement(fullPath);
+
+        //Z pomocą przychodzi podwójny slash '//'
+        //Efekt wyszukiwania $x("/html/body/table/tbody/tr") oraz $x("//tr") jest taki sam, pierwszy zapis jest dokładniejszy
+        //użycie zapisu z //tr pozwoli na zwrócenie wszystkich tagów tr w strukturze (jak w $$("tr") )
+        //podwójnego slasha można także użyć w środku komendy $x("/html/body/table//tr") by znaleźć zawężone wyniki
+        By preciseXPath = By.xpath("/html/body/div//ul");
+        By shortPath = By.xpath("//ul");
+        driver.findElement(preciseXPath);
+        driver.findElements(shortPath);
+
+        //Ze względu na możliwości Xpatha szukanie elementów można wykonać na wiele sposobów. Postaraj się wybierać te
+        //najbardziej pasujące dla twoich potrzeb (full xPath,full+shortened,short,search,with function)
+
+        //Syntax for attribute search: [@x='y']
+        // @ <- marking following string as attribute name
+        // x <- attribute name
+        // y <- value of the attribute
+        //clickOnMe
+        By buttonID = By.xpath("/html/body/button[@id='clickOnMe']");
+        //Ponieważ struktura wyrażenie xpath ma w sobie wyszukiwanie, precyzyjne podawanie xpatha pewnie nie jest konieczne
+        buttonID = By.xpath("//button[@id='clickOnMe']");
+        driver.findElement(buttonID);
+
+        //fname
+        By firstName = By.xpath("//input[@name='fname']");
+        driver.findElement(firstName);
+
+        //topSecret
+        By topSecret = By.xpath("//p[@class='topSecret']");
+        driver.findElement(topSecret);
+
+        //input
+        By inputXpath = By.xpath("//input");
+        driver.findElement(inputXpath).sendKeys("Pierwszy");
+        List<WebElement> inputs = driver.findElements(inputXpath);
+        System.out.println(inputs.size());
+
+        //linkText, using text() method, which finds the exact matching string
+        By xPathW3SchoolText = By.xpath("//a[text()='Visit W3Schools.com!']");
+        WebElement xPathText = driver.findElement(xPathW3SchoolText);
+
+        By findW3SchoolPartialLinkText = By.partialLinkText("W3Schools.");
+        xPathText = driver.findElement(findW3SchoolPartialLinkText);
+
+
+
+
+
     }
 }
