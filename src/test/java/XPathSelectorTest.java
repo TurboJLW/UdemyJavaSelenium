@@ -66,6 +66,9 @@ public class XPathSelectorTest {
         By findW3SchoolPartialLinkText = By.partialLinkText("W3Schools.");
         xPathText = driver.findElement(findW3SchoolPartialLinkText);
 
+        By xPathContainsText = By.xpath("//a[contains(text(),'Visit')]");
+        WebElement linkContainsVisit = driver.findElement(xPathContainsText);
+
 
 
 
