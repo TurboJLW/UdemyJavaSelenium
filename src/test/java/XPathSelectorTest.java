@@ -63,8 +63,11 @@ public class XPathSelectorTest {
         By xPathW3SchoolText = By.xpath("//a[text()='Visit W3Schools.com!']");
         WebElement xPathText = driver.findElement(xPathW3SchoolText);
 
+        /*
         By findW3SchoolPartialLinkText = By.partialLinkText("W3Schools.");
-        xPathText = driver.findElement(findW3SchoolPartialLinkText);
+        xPathText = driver.findElement(findW3SchoolPartialLinkText); -
+        //this is only for reference as it is a Selenium selector function
+         */
 
         By xPathContainsText = By.xpath("//a[contains(text(),'Visit')]");
         WebElement linkContainsVisit = driver.findElement(xPathContainsText);
