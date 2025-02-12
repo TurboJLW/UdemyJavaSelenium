@@ -72,7 +72,34 @@ public class XPathSelectorTest {
         By xPathContainsText = By.xpath("//a[contains(text(),'Visit')]");
         WebElement linkContainsVisit = driver.findElement(xPathContainsText);
 
+        //Aby wybrać ktorys element z listy (w konsoli przegladarki) należy w nawiasach okrągłych () zamknąć selektor po
+        //którym chcemy wyszukiwać i w nawiasach kwadratowych [] wpisać index (licząc od 1)
+        // $x oraz $$ sluza tylko do wyszukiwania w konsoli przegladarki
+        // e.g. $x("(//input)[2]")
+        //
+        // dodatkowo w miejscu indexu można wpisywać funkcje first() i last() aby zwrócić pierwszy i ostatni element
+        //
+        //Można także użyć kwadratowych nawiasów by przeszukać całą listę w poszukiwaniu elementu z atrybutem o danej nazwie
+        // e.g. $x("//*[@name]"), $x("//*[@id]")
+        // $x("//button[@id]")
+        // jest to przerobiony selektor wyszukujący atrybut o konkretnej nazwie:
+        // $x("//*[@name='fname']")
+        //
+        //wyszukiwania te mozna laczyc
+        // $x("(//button[@id])[1]")
+        // $x("(//button[@id])[last()]")
 
+        By allXpath = By.xpath("//*");
+        driver.findElement(allXpath);
+
+        By secondElement = By.xpath("(//input)[2]");
+        driver.findElement(secondElement);
+
+        By lastElement = By.xpath("(//input)[last()]");
+        driver.findElement(lastElement);
+
+        By elementWithAttribute = By.xpath("(//*[@id])");
+        driver.findElements(elementWithAttribute);
 
 
 
