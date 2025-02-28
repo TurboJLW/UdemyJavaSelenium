@@ -102,6 +102,17 @@ public class XPathSelectorTest {
         driver.findElements(elementWithAttribute);
 
 
+        By xPathNameContains = By.xpath("//*[contains(@name,'ame')]");
+        driver.findElement(xPathNameContains);
+
+        By xPathStartsWith = By.xpath("//*[starts-with(@name, 'u')]");
+        driver.findElement(xPathStartsWith);
+
+        // for Xpath 2.0 this will work, but if xpath 1.0 is used, then to search using string that ends with you have to use substring
+        //By xPathEndsWith = By.xpath("//*[ends-with(@name, 'me')]");
+
+        By xPathEndsWith = By.xpath("//*[substring(@name, string-length(@name) - string-length('me') + 1) = 'me']");
+        driver.findElement(xPathEndsWith);
 
     }
 }
