@@ -114,5 +114,39 @@ public class XPathSelectorTest {
         By xPathEndsWith = By.xpath("//*[substring(@name, string-length(@name) - string-length('me') + 1) = 'me']");
         driver.findElement(xPathEndsWith);
 
+        //Even more XPath Selectors
+
+        //use child to find direct children of an element specified before and use :: to search for that element
+        By xPathChildElement = By.xpath("//div/child::ul");
+        driver.findElement(xPathChildElement);
+
+        //use descendants to search for ALL children, grandchildren etc.
+        By xPathDescendants = By.xpath("//div/descendant::*");
+        driver.findElements(xPathDescendants);
+
+        //use ancestor to search for ALL parents, grandparents etc.
+        By xPathAsnscestor = By.xpath("//div/ancestor::*");
+        driver.findElements(xPathAsnscestor);
+
+        //use .. to search for an element in the "folder" above
+        By xPathDoubleDot = By.xpath("//div/../..");
+        driver.findElement(xPathDoubleDot);
+
+        //use following to get all elements that are place after the searched element in html structure
+        //preceding for all elements before
+        By xPathFollowing = By.xpath("//img/following::*");
+        driver.findElement(xPathFollowing);
+
+        //add -sibling to find all elements that precede or follow an element, but stay on the same level
+        By xPathSibling = By.xpath("//img/following-sibling::*");
+        driver.findElement(xPathSibling);
+
+
+
+
+
+
+
+
     }
 }
