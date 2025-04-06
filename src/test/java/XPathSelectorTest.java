@@ -141,11 +141,8 @@ public class XPathSelectorTest {
         By xPathSibling = By.xpath("//img/following-sibling::*");
         driver.findElement(xPathSibling);
 
-
-
-
-
-
+        By xPathPreceding = By.xpath("//img/preceding::*");
+        By xPathPrecedingSibling = By.xpath("//img/preceding-sibling::*");
 
 
     }
