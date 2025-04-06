@@ -144,6 +144,16 @@ public class XPathSelectorTest {
         By xPathPreceding = By.xpath("//img/preceding::*");
         By xPathPrecedingSibling = By.xpath("//img/preceding-sibling::*");
 
+        //You can use logical operator for finding several matching elements with a selector
+        //use " | " for OR and use " and " for AND
+
+        By divsAndLinks = By.xpath("//a | //div");
+        By andOperator = By.xpath("//input[@name='fname' and @id='fname']");
+        By orOperator = By.xpath("//input[@name='fname' or @id='fname']");
+
+        driver.findElement(divsAndLinks);
+        driver.findElement(andOperator);
+        driver.findElement(orOperator);
 
     }
 }
