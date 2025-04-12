@@ -155,5 +155,12 @@ public class XPathSelectorTest {
         driver.findElement(andOperator);
         driver.findElement(orOperator);
 
+        //W celu powtórki
+        //Podczas wyszukiwania elementów szukamy miedzy innymi po tagach (np. Input, button, a, p, img etc.)
+        // atrybutach @name (po atrybucie),  @id='clickOnMe' (po nazwie atrybutu), oraz
+        // po tekście zawartym w atrybutach //a[contains(text(),'Visit')]
+
+        // Xpath jest bardzo precyzyjnym selektorem, co chociaż pozwala na bezbłędne wybranie elementu, to jest
+        // on bardzo podatny na zmiany w stronie
     }
 }
