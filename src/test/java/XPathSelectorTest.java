@@ -125,8 +125,8 @@ public class XPathSelectorTest {
         driver.findElements(xPathDescendants);
 
         //use ancestor to search for ALL parents, grandparents etc.
-        By xPathAsnscestor = By.xpath("//div/ancestor::*");
-        driver.findElements(xPathAsnscestor);
+        By xPathAnscestor = By.xpath("//div/ancestor::*");
+        driver.findElements(xPathAnscestor);
 
         //use .. to search for an element in the "folder" above
         By xPathDoubleDot = By.xpath("//div/../..");
