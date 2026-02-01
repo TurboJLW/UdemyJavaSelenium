@@ -125,8 +125,8 @@ public class XPathSelectorTest {
         driver.findElements(xPathDescendants);
 
         //use ancestor to search for ALL parents, grandparents etc.
-        By xPathAsnscestor = By.xpath("//div/ancestor::*");
-        driver.findElements(xPathAsnscestor);
+        By xPathAnscestor = By.xpath("//div/ancestor::*");
+        driver.findElements(xPathAnscestor);
 
         //use .. to search for an element in the "folder" above
         By xPathDoubleDot = By.xpath("//div/../..");
@@ -155,5 +155,12 @@ public class XPathSelectorTest {
         driver.findElement(andOperator);
         driver.findElement(orOperator);
 
+        //W celu powtórki
+        //Podczas wyszukiwania elementów szukamy miedzy innymi po tagach (np. Input, button, a, p, img etc.)
+        // atrybutach @name (po atrybucie),  @id='clickOnMe' (po nazwie atrybutu), oraz
+        // po tekście zawartym w atrybutach //a[contains(text(),'Visit')]
+
+        // Xpath jest bardzo precyzyjnym selektorem, co chociaż pozwala na bezbłędne wybranie elementu, to jest
+        // on bardzo podatny na zmiany w stronie
     }
 }
