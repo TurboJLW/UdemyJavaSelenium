@@ -1,9 +1,11 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.webdriver.WebDriverBrowser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class BasicActionsTest {
@@ -32,6 +34,18 @@ public class BasicActionsTest {
         //WebElement xpathSubmitButton = driver.findElement(By.xpath("//*[contains(@value,'Submit')]"));
         //xpathSubmitButton.click();
 
+        WebElement rulesCheckbox = driver.findElement(By.cssSelector("[type='checkbox']"));
+        rulesCheckbox.click();
+
+        WebElement radioButton = driver.findElement(By.cssSelector("input[value='male']"));
+        radioButton.click();
+
+        WebElement selectCar = driver.findElement(By.cssSelector("select"));
+        Select cars = new Select(selectCar);
+        cars.selectByIndex(2);
+        cars.selectByVisibleText("Saab");
+        cars.selectByValue("volvo");
+        cars.selectByContainsVisibleText("es");
 
     }
 }
