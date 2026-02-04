@@ -1,5 +1,4 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.webdriver.WebDriverBrowser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class BasicActionsTest {
 
@@ -46,6 +47,14 @@ public class BasicActionsTest {
         cars.selectByVisibleText("Saab");
         cars.selectByValue("volvo");
         cars.selectByContainsVisibleText("es");
+
+        //Pobranie opcji z selecta - Trzeba użyć get text
+        List<WebElement> optionsList = cars.getOptions();
+        System.out.println(optionsList.size());
+        for (WebElement webElement : optionsList) {
+            System.out.println(webElement.getText());
+
+        }
 
     }
 }
