@@ -24,6 +24,8 @@ public class BasicActionsTest {
         WebElement usernameInput = driver.findElement(By.name("username"));
         usernameInput.clear();
         usernameInput.sendKeys("JanekTW");
+        System.out.println(usernameInput.getText()); //Aby pobrać text z pola tekstowego należy użyć getDomProperty
+        System.out.println(usernameInput.getDomProperty("value"));
         usernameInput.sendKeys(Keys.TAB);
         usernameInput.sendKeys(Keys.TAB);
         //Drugi TAB nie przechodzi na kolejny element ponieważ jest wykonywany na elemencie usernameInput!
@@ -55,6 +57,17 @@ public class BasicActionsTest {
             System.out.println(webElement.getText());
 
         }
+
+        SelectCheck check = new SelectCheck();
+        check.isString("Skoda",cars);
+
+        WebElement hiddenPara = driver.findElement(By.cssSelector(".topSecret"));
+        System.out.println("By text: " + hiddenPara.getText()); //Not retrievable
+        System.out.println("By value: " + hiddenPara.getDomAttribute("value")); //no value attribute
+        System.out.println("By textContent: " + hiddenPara.getDomProperty("textContent")); // Hidden parameter can be retrieved with getDomProperty
+
+
+
 
     }
 }
