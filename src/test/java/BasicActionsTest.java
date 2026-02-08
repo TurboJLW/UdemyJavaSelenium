@@ -1,18 +1,16 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BasicActionsTest {
 
     @Test
-    public void performAction() {
+    public void performAction() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("https://testeroprogramowania.github.io/selenium/");
@@ -28,6 +26,13 @@ public class BasicActionsTest {
         System.out.println(usernameInput.getDomProperty("value"));
         usernameInput.sendKeys(Keys.TAB);
         usernameInput.sendKeys(Keys.TAB);
+
+        usernameInput.sendKeys(Keys.ENTER);
+        Alert firstAlert = driver.switchTo().alert();
+        firstAlert.accept();
+        driver.switchTo().alert().accept();
+
+
         //Drugi TAB nie przechodzi na kolejny element ponieważ jest wykonywany na elemencie usernameInput!
 
         //WebElement submitButton = driver.findElement(By.className("input"));
