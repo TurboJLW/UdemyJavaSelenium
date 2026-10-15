@@ -16,6 +16,7 @@ public class UploadTest {
         driver.get("https://testeroprogramowania.github.io/selenium/fileupload.html");
         driver.findElement(By.id("myFile")).sendKeys("C:\\Users\\janly\\Downloads\\plik.txt");
 
+
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
         File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
 
