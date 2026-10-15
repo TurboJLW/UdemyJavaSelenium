@@ -1,8 +1,9 @@
 target/
+**/src/test/resources/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-!**/src/test/resources/
+
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
