@@ -30,10 +30,15 @@ public class UploadTest {
 
         //alternatywne podejscie to np Sikulix, oddzielny program do skryptów
 
-        //Zrzut ekranu z unikalną nazwą
-        FileUtils.copyFile(screenshotBefore,new File("src/test/resources/beforeUpload.png"));
+        //Zrzut ekranu z unikalną nazwą + randomizacja
+
+        String fileName = "beforeUpload_" + randomNumber + ".png";
+
+        FileUtils.copyFile(screenshotBefore,new File("src/test/resources/" + fileName));
         driver.findElement(By.id("myFile")).sendKeys("C:\\Users\\janly\\Downloads\\plik.txt");
         File screenshotAfter = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshotAfter,new File("src/test/resources/afterUpload.png"));
+
+        fileName = "afterUpload_" + randomNumber  + ".png";
+        FileUtils.copyFile(screenshotAfter,new File("src/test/resources/" + fileName));
     }
 }
