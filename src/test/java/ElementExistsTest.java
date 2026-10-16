@@ -20,6 +20,10 @@ public class ElementExistsTest {
         System.out.println(elementsExist(By.tagName("p")));
         System.out.println(elementsExist(By.id("topSecret")));
 
+        //Czy element jest wyświetlony na stronie (nie jest hidden)
+        System.out.println(driver.findElement(By.tagName("p")).isDisplayed());
+        System.out.println(driver.findElement(By.tagName("button")).isDisplayed());
+
     }
 
     public boolean elementExists(By locator){
