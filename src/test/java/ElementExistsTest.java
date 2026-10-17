@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -23,6 +24,15 @@ public class ElementExistsTest {
         //Czy element jest wyświetlony na stronie (nie jest hidden)
         System.out.println(driver.findElement(By.tagName("p")).isDisplayed());
         System.out.println(driver.findElement(By.tagName("button")).isDisplayed());
+        //Czy nie jest disabled
+        System.out.println(driver.findElement(By.tagName("button")).isEnabled());
+
+        //Czy checkbox jest zaznaczony
+        System.out.println("==========================================");
+        WebElement checkbox = driver.findElement(By.cssSelector("[type='checkbox']"));
+        System.out.println(checkbox.isSelected());
+        checkbox.click();
+        System.out.println(checkbox.isSelected());
 
     }
 
