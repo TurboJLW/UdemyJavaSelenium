@@ -11,12 +11,25 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class FirstTestNGTest {
+public class FirstTestNGTest extends BaseTest {
 
     WebDriver driver;
 
     @Test
-    public void waitTest() {
+    public void firstTestNGTest() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
+        driver.findElement(By.id("clickOnMe")).click();
+        waitForElementToExist(By.cssSelector("p"));
+
+        String paraText = driver.findElement(By.cssSelector("p")).getText();
+        Assert.assertEquals(paraText, "");
+
+    }
+
+    @Test
+    public void secondTestNGTest() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
