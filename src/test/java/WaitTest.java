@@ -25,6 +25,7 @@ public class WaitTest {
         driver.findElement(By.id("clickOnMe")).click();
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //w przypadku FluentWait trzeba zadeklarowac typ przekazywany do konstruktora
+        //Fluent wait domyślnie nie ignoruje wyjątków, trzeba te ignorowane wyjątki zdefiniować, tak samo jak timeout.
         FluentWait <WebDriver> wait = new FluentWait<>(driver);
         //webdriverwait ma domyślnie zdefiniowane wyjatki, fluentwait tego nie ma
         //jezeli chcemy by fluent wait ignorowal wyjatek, to trzeba recznie dodac taki warunek
