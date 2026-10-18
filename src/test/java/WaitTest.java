@@ -60,9 +60,25 @@ public class WaitTest {
         wait.pollingEvery(Duration.ofSeconds(1));
 
         //interfejs Function jest tzw "Interfejsem funkcjonalnym", posiadającym tylko 1 metodę do zaimplementowania.
-        wait.until(new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver webDriver) {
+//        wait.until(new Function<WebDriver, Boolean>() {
+//            @Override
+//            public Boolean apply(WebDriver webDriver) {
+//                List<WebElement> elements = driver.findElements(locator);
+//                if (elements.size()>0) {
+//                    System.out.println("Element jest na stronie");
+//                    return true;
+//                } else {
+//                    System.out.println("Elementu nie ma na stronie");
+//                    return false;
+//                }
+//            }
+//        });
+
+        //Wyrażenie -> (lambda) zastępuje powyższe zapis tylko jeśli zostałby użyty interfejs funkcjonalny
+        //Dzięki temu nie trzeba deklarować nowej klasy, wpisywać @Override i można po prostu podstawić parametry
+        //pod ciało metody.
+
+        wait.until((driver) -> {
                 List<WebElement> elements = driver.findElements(locator);
                 if (elements.size()>0) {
                     System.out.println("Element jest na stronie");
@@ -71,7 +87,6 @@ public class WaitTest {
                     System.out.println("Elementu nie ma na stronie");
                     return false;
                 }
-            }
         });
 
     }
