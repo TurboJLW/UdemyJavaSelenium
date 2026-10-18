@@ -1,9 +1,8 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -24,11 +23,16 @@ public class WaitTest {
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
 
         driver.findElement(By.id("clickOnMe")).click();
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //w przypadku FluentWait trzeba zadeklarowac typ przekazywany do konstruktora
+        FluentWait <WebDriver> wait = new FluentWait<>(driver);
+        //webdriverwait ma domyślnie zdefiniowane wyjatki, fluentwait tego nie ma
+        //jezeli chcemy by fluent wait ignorowal wyjatek, to trzeba recznie dodac taki warunek
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.withTimeout(Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[normalize-space()='Dopiero się pojawiłem!']")));
 
-        //driver.findElement(By.xpath("//p[normalize-space()='Dopiero się pojawiłem!']"));
+        driver.findElement(By.xpath("//p[normalize-space()='Dopiero się pojawiłem!']"));
 
     }
 }
