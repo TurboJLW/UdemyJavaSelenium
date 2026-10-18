@@ -31,7 +31,16 @@ public class WaitTest {
         //jezeli chcemy by fluent wait ignorowal wyjatek, to trzeba recznie dodac taki warunek
 
         wait.withTimeout(Duration.ofSeconds(10));
+        //visibilityOf nie jest tak dobre jak visibilityOfElementLocated, ponieważ druga funkcja upewnia się,
+        // że element jest zlokalizowany na stronie i pozwala na czekanie
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[normalize-space()='Dopiero się pojawiłem!']")));
+        //Visibility sprawdza czy element jest w strukturze i czy jest widoczny dla uzytkownika
+        //aby sprawdzic ze element ISTNIEJE w strukturze, używamy presenceOfElementLocated
+        //Locator jest zawsze bezpieczniejszy do przekazywania niż WebElement, ponieważ nawet jeśli nie istnieje na stronie, to będziemy na niego czekać.
+        //Używaj findElement jeśli masz PEWNOŚĆ, że element jest na stronie.
+        //Przykładowe Locatory:
+        //By.id, by.xpath, by.cssSelector
+        //findElement(By.id("username")) od razu wyszukuje element i jesli nie wystapi to moze wyrzucic blad
 
         driver.findElement(By.xpath("//p[normalize-space()='Dopiero się pojawiłem!']"));
 
