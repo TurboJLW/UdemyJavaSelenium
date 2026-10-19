@@ -1,3 +1,5 @@
+package pl.testtw;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -24,7 +26,8 @@ public class FirstTestNGTest extends BaseTest {
         waitForElementToExist(By.cssSelector("p"));
 
         String paraText = driver.findElement(By.cssSelector("p")).getText();
-        Assert.assertEquals(paraText, "");
+        Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
+        driver.quit();
 
     }
 
@@ -37,7 +40,8 @@ public class FirstTestNGTest extends BaseTest {
         waitForElementToExist(By.cssSelector("p"));
 
         String paraText = driver.findElement(By.cssSelector("p")).getText();
-        Assert.assertEquals(paraText, "");
+        Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
+        driver.quit();
 
     }
 
