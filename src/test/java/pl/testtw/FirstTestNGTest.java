@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
@@ -24,18 +25,27 @@ public class FirstTestNGTest extends BaseTest {
         driver = new ChromeDriver();
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
         driver.findElement(By.id("clickOnMe")).click();
+        SoftAssert softAssert = new SoftAssert();
         waitForElementToExist(By.cssSelector("p"));
 
         WebElement para = driver.findElement(By.cssSelector("p"));
         String paraText = driver.findElement(By.cssSelector("p")).getText();
 
-        // Assert.assertEquals(para.isDisplayed(), true); // to to samo co Assert.assertTrue(para.isDisplayed());
+        // Assert.assertEquals(para.isDisplayed(), true); // to samo co Assert.assertTrue(para.isDisplayed());
         Assert.assertTrue(para.isDisplayed());
         Assert.assertTrue(para.getText().startsWith("Dopiero"));
         Assert.assertFalse(para.getText().endsWith("Pojawiłem"));
         Assert.assertEquals(para.getText(), "Dopiero się pojawiłem!");
         //Assert.assertEquals(para.getText(), "Dopiero", "Teksty są różne");
+
+        softAssert.assertTrue(para.isDisplayed());
+        softAssert.assertTrue(para.getText().startsWith("Dopiero"));
+        softAssert.assertFalse(para.getText().endsWith("Pojawiłem"));
+        softAssert.assertEquals(para.getText(), "Dopiero się pojawiłem!");
+        softAssert.assertEquals(para.getText(), "Dopiero", "Teksty są różne");
+
         driver.quit();
+        softAssert.assertAll();
 
     }
 
