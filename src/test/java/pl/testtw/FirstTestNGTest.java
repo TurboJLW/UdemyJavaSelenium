@@ -26,13 +26,20 @@ public class FirstTestNGTest extends BaseTest {
         driver.findElement(By.id("clickOnMe")).click();
         waitForElementToExist(By.cssSelector("p"));
 
+        WebElement para = driver.findElement(By.cssSelector("p"));
         String paraText = driver.findElement(By.cssSelector("p")).getText();
-        Assert.assertEquals(paraText, "Dopiero się pojawiłem!");
+
+        // Assert.assertEquals(para.isDisplayed(), true); // to to samo co Assert.assertTrue(para.isDisplayed());
+        Assert.assertTrue(para.isDisplayed());
+        Assert.assertTrue(para.getText().startsWith("Dopiero"));
+        Assert.assertFalse(para.getText().endsWith("Pojawiłem"));
+        Assert.assertEquals(para.getText(), "Dopiero się pojawiłem!");
+        //Assert.assertEquals(para.getText(), "Dopiero", "Teksty są różne");
         driver.quit();
 
     }
 
-    @Test @Ignore
+    @Test
     public void secondTestNGTest() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
