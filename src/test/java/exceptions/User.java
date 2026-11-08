@@ -3,8 +3,8 @@ package exceptions;
 import java.util.Scanner;
 
 public class User extends Person {
-    int age = 10;
-    String name = "Grzesiu Maluch";
+//    int age = 10;
+//    String name = "Grzesiu Maluch";
     Scanner scanner = new Scanner(System.in);
 
     User(){
