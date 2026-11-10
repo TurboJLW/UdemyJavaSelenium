@@ -7,7 +7,6 @@ public class ChromeDriver implements WebDriver{
 
     public ChromeDriver(){
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
     }
 
     public ChromeDriver(ChromeOptions options) {

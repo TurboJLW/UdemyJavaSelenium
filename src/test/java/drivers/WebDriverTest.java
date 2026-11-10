@@ -28,6 +28,7 @@ public class WebDriverTest {
 
 //        driver.get("https://testeroprogramowania.github.io/selenium/");
         driver.get();
+        driver.findElementBy();
 
 
 
