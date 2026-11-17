@@ -7,6 +7,12 @@ import org.openqa.selenium.safari.SafariDriver;
 public class WebDriverTest {
     public static void main(String[] args) throws NoValidBrowserName {
 
+        DriverType[] driverTypes = DriverType.values();
+        for (int i = 0; i< driverTypes.length; i++) {
+            System.out.println(driverTypes[i].name);
+            System.out.println(driverTypes[i].path);
+        }
+
 //       ChromeDriver chrome = new ChromeDriver();
 //       chrome.get();
 //       chrome.findElementBy();
