@@ -21,7 +21,7 @@ public class WebDriverTest {
 
         WebDriver driver = null;
         try {
-            driver = getDriver(DriverType.OPERA);
+            driver = getDriver(DriverType.CHROME);
         } catch (NoValidBrowserName e) {
             e.printStackTrace();
         }
@@ -29,8 +29,6 @@ public class WebDriverTest {
 //        driver.get("https://testeroprogramowania.github.io/selenium/");
         driver.get();
         driver.findElementBy();
-
-
 
     }
 
@@ -43,16 +41,31 @@ public class WebDriverTest {
 //        throw new NoValidBrowserName("No valid browser name");
 //    }
 
-    private static WebDriver getDriver(DriverType type) throws NoValidBrowserName {
-        if (type==DriverType.CHROME) {
-            return new ChromeDriver();
-        } else if (type==DriverType.FIREFOX) {
-            return new FirefoxDriver();
-        } else if (type==DriverType.OPERA) {
-            ChromeOptions options = new ChromeOptions();
-            return new ChromeDriver(options);
-        }
-        throw new NoValidBrowserName("No valid browser name");
+//    private static WebDriver getDriver(DriverType type) throws NoValidBrowserName {
+//        if (type==DriverType.CHROME) {
+//            return new ChromeDriver();
+//        } else if (type==DriverType.FIREFOX) {
+//            return new FirefoxDriver();
+//        } else if (type==DriverType.OPERA) {
+//            ChromeOptions options = new ChromeOptions();
+//            return new ChromeDriver(options);
+//        }
+//        throw new NoValidBrowserName("No valid browser name");
+//    }
+
+private static WebDriver getDriver(DriverType type) throws NoValidBrowserName {
+    if (type.name.equals("chrome")) {
+        System.out.println(type.path);
+        return new ChromeDriver();
+    } else if (type.name.equals("firefox")) {
+        System.out.println(type.path);
+        return new FirefoxDriver();
+    } else if (type.name.equals("opera")) {
+        ChromeOptions options = new ChromeOptions();
+        System.out.println(type.path);
+        return new ChromeDriver(options);
     }
+    throw new NoValidBrowserName("No valid browser name");
+}
 
 }
